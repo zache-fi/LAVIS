@@ -138,7 +138,8 @@ class BlipCaption(BlipBase):
         samples,
         use_nucleus_sampling=False,
         num_beams=3,
-        max_length=30,
+#        max_length=30,
+        max_length=60,     
         min_length=10,
         top_p=0.9,
         repetition_penalty=1.0,
@@ -211,7 +212,8 @@ class BlipCaption(BlipBase):
         text_decoder = XBertLMHeadDecoder.from_config(cfg)
 
         prompt = cfg.get("prompt", None)
-        max_txt_len = cfg.get("max_txt_len", 40)
+#        max_txt_len = cfg.get("max_txt_len", 40)        
+        max_txt_len = cfg.get("max_txt_len", 80)
 
         model = cls(image_encoder, text_decoder, prompt=prompt, max_txt_len=max_txt_len)
         model.load_checkpoint_from_config(cfg)
